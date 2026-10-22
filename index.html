@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d1e">
+  <title>Arcade — Mini jogos</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: 'Trebuchet MS', sans-serif;
+      color: #eff5ff;
+      background: #080d1e;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: radial-gradient(ellipse at 50% 100%, #203765 0, transparent 55%), #080d1e;
+    }
+
+    main { width: min(100%, 780px); }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: #67eaff;
+      font-family: Consolas, monospace;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(44px, 9vw, 82px);
+      line-height: 0.95;
+    }
+
+    .intro {
+      margin: 18px 0 32px;
+      color: #bac7e2;
+      font-size: 18px;
+    }
+
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
+      gap: 18px;
+    }
+
+    .game-card {
+      display: block;
+      min-height: 220px;
+      padding: 24px;
+      border: 1px solid #33456c;
+      background: rgba(14, 23, 47, 0.88);
+      color: inherit;
+      text-decoration: none;
+      transition: transform 160ms ease, border-color 160ms ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-4px);
+      border-color: #67eaff;
+    }
+
+    .game-card:focus-visible {
+      outline: 3px solid #67eaff;
+      outline-offset: 4px;
+    }
+
+    .game-card span {
+      color: #ff8291;
+      font-family: Consolas, monospace;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+    }
+
+    .game-card h2 { margin: 18px 0 10px; font-size: 28px; }
+    .game-card p { margin: 0; color: #bac7e2; line-height: 1.5; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">ARCADE / SELECIONE UM JOGO</p>
+    <h1>Mini jogos</h1>
+    <p class="intro">Dois clássicos, duas missões. Escolha seu próximo desafio.</p>
+    <nav class="games" aria-label="Jogos disponíveis">
+      <a class="game-card" href="games/flap-bird/">
+        <span>01 / VOO</span>
+        <h2>Flaap Bird</h2>
+        <p>Desvie dos obstáculos, marque pontos e atravesse quatro cenários.</p>
+      </a>
+      <a class="game-card" href="games/space-invaders/">
+        <span>02 / DEFESA</span>
+        <h2>Space Invaders</h2>
+        <p>Proteja a base, elimine ondas de invasores e tente bater seu recorde.</p>
+      </a>
+    </nav>
+  </main>
+</body>
+</html>

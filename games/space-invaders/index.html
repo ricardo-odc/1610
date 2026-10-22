@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#060b1b">
+  <title>Space Invaders</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/game.js" defer></script>
+  <script src="js/ui.js" defer></script>
+</head>
+<body>
+  <div class="mini-game-page">
+    <main class="game-shell" data-space-invaders-root>
+      <section class="screen opening" id="opening-screen" aria-labelledby="game-title">
+        <div class="starfield" aria-hidden="true"></div>
+        <div class="planet planet-one" aria-hidden="true"></div>
+        <div class="planet planet-two" aria-hidden="true"></div>
+
+        <div class="opening-content">
+          <p class="eyebrow">NAVEGUE PELO SETOR BETA</p>
+          <h1 id="game-title">SPACE<br><span>INVADERS</span></h1>
+          <p class="opening-copy">Desvie dos invasores, proteja a base e acumule a maior pontuação possível.</p>
+          <button class="play-button" id="start-button" type="button">
+            <span aria-hidden="true">▶</span> Iniciar missão
+          </button>
+          <ul class="mission-list" aria-label="Objetivos do jogo">
+            <li>Use as setas para mover a nave.</li>
+            <li>Espaço dispara os lasers.</li>
+            <li>Sobreviva às ondas e mantenha as barreiras.</li>
+          </ul>
+          <p class="credit-line">STATUS: DEFESA ATIVA</p>
+        </div>
+        <p class="version-mark">ARCADE / 01</p>
+      </section>
+
+      <section class="screen game-screen" id="game-screen" aria-label="Space Invaders: jogo" hidden>
+        <canvas id="game-canvas" aria-label="Área de jogo. Mova a nave e atire nos invasores."></canvas>
+        <header class="game-hud" aria-live="polite">
+          <div class="hud-stat hud-score">
+            <span class="hud-label">PONTOS</span>
+            <strong id="score-value">0</strong>
+          </div>
+          <div class="hud-stat">
+            <span class="hud-label">VIDAS</span>
+            <strong id="lives-value">3</strong>
+          </div>
+          <div class="hud-stat">
+            <span class="hud-label">NÍVEL</span>
+            <strong id="level-value">1</strong>
+          </div>
+        </header>
+        <div class="game-overlay" id="game-overlay" aria-live="polite">
+          <p class="eyebrow" id="overlay-eyebrow">NÍVEL 1</p>
+          <h2 id="overlay-title">Nave pronta</h2>
+          <p id="overlay-copy">Use as setas para mover e Espaco para disparar.</p>
+          <button class="play-button" id="overlay-action" type="button">Iniciar missão</button>
+        </div>
+        <p class="version-mark">ARCADE / 01</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

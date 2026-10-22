@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#83dce2">
+  <title>Flaap Bird</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/game.js" defer></script>
+  <script src="js/ui.js" defer></script>
+</head>
+<body>
+  <div class="mini-game-page">
+    <main class="game-shell" data-flap-bird-root>
+      <section class="screen opening" id="opening-screen" aria-labelledby="game-title">
+        <div class="sun" aria-hidden="true"></div>
+        <div class="cloud cloud-one" aria-hidden="true"></div>
+        <div class="cloud cloud-two" aria-hidden="true"></div>
+        <div class="hill hill-back" aria-hidden="true"></div>
+        <div class="hill hill-front" aria-hidden="true"></div>
+        <div class="pipe pipe-opening" aria-hidden="true"></div>
+        <div class="bird bird-opening" aria-hidden="true"><span></span></div>
+        <div class="ground" aria-hidden="true"></div>
+
+        <div class="opening-content">
+          <p class="eyebrow">UM CLÁSSICO, OUTRO VOO</p>
+          <h1 id="game-title">FLAAP<br><span>BIRD</span></h1>
+          <p class="opening-copy">Quatro céus. Um voo sem pausas.</p>
+          <button class="play-button" id="start-button" type="button">
+            <span aria-hidden="true">▶</span> Começar
+          </button>
+          <p class="credit-line">PREPARE AS ASAS</p>
+        </div>
+        <p class="version-mark">ARCADE / 01</p>
+      </section>
+
+      <section class="screen game-screen" id="game-screen" aria-label="Flaap Bird: jogo" hidden>
+        <canvas id="game-canvas" aria-label="Área de jogo. Clique, toque ou pressione Espaço para voar."></canvas>
+        <header class="game-hud" aria-live="polite">
+          <button class="menu-button" id="menu-button" type="button" aria-label="Voltar ao menu" title="Voltar ao menu">←</button>
+          <div class="hud-stat">
+            <span class="hud-label">FASE</span>
+            <strong id="phase-value">1 / 4</strong>
+            <span class="hud-detail" id="phase-detail">12:00 · DIA</span>
+          </div>
+          <div class="hud-stat hud-score">
+            <span class="hud-label">PONTOS</span>
+            <strong id="score-value">0</strong>
+          </div>
+          <div class="hud-stat hud-time">
+            <span class="hud-label">TEMPO DE JOGO</span>
+            <strong id="elapsed-value">00:00</strong>
+          </div>
+        </header>
+        <div class="game-overlay" id="game-overlay" aria-live="polite">
+          <p class="eyebrow" id="overlay-eyebrow">FASE 1 · 12:00 · DIA</p>
+          <h2 id="overlay-title">Pronto para voar?</h2>
+          <p id="overlay-copy">Clique, toque ou pressione Espaço para começar.</p>
+          <button class="play-button" id="overlay-action" type="button">Começar voo</button>
+        </div>
+        <p class="version-mark">ARCADE / 01</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
