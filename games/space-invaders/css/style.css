@@ -158,6 +158,40 @@ h1 span {
   transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
 }
 
+.home-link {
+  position: absolute;
+  z-index: 6;
+  top: 18px;
+  left: 22px;
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  padding: 0 14px;
+  border: 1px solid var(--neon);
+  color: var(--neon);
+  background: var(--panel-strong);
+  box-shadow: 3px 3px 0 var(--neon);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.game-screen .home-link {
+  top: auto;
+  bottom: 20px;
+}
+
+.home-link:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--neon);
+}
+
+.home-link:focus-visible {
+  outline: 3px solid #fffdf4;
+  outline-offset: 4px;
+}
+
 .play-button {
   display: inline-flex;
   align-items: center;
@@ -293,6 +327,20 @@ h1 span {
   z-index: 2;
   color: #edf5ff;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 560px) {
+  .home-link {
+    top: 12px;
+    left: 12px;
+    min-height: 38px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  .game-screen .home-link {
+    bottom: 16px;
+  }
 }
 
 @keyframes arrive {

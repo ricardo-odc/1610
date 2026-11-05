@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080d1e">
-  <title>Arcade — Mini jogos</title>
+  <title>Arcade — RD</title>
   <style>
     :root {
       color-scheme: dark;
@@ -84,7 +84,49 @@
     }
 
     .game-card h2 { margin: 18px 0 10px; font-size: 28px; }
+    .game-card .game-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 0 14px;
+      border: 1px solid #33456c;
+    }
     .game-card p { margin: 0; color: #bac7e2; line-height: 1.5; }
+
+    .github-link {
+      position: fixed;
+      z-index: 10;
+      top: 18px;
+      right: 18px;
+      display: block;
+      width: min(160px, 22vw);
+      transition: transform 160ms ease;
+    }
+
+    .github-link:hover {
+      transform: translateY(-3px);
+    }
+
+    .github-link:focus-visible {
+      outline: 3px solid #67eaff;
+      outline-offset: 4px;
+    }
+
+    .github-link img {
+      display: block;
+      width: 100%;
+      height: auto;
+      -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 100%);
+      mask-image: radial-gradient(ellipse at center, #000 30%, transparent 100%);
+    }
+
+    @media (max-width: 560px) {
+      .github-link {
+        top: 12px;
+        right: 12px;
+        width: 96px;
+      }
+    }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition-duration: 0.01ms !important; }
@@ -92,19 +134,24 @@
   </style>
 </head>
 <body>
+  <a class="github-link" href="https://github.com/ricardo-odc" target="_blank" rel="noopener noreferrer" aria-label="Abrir perfil de Ricardo no GitHub">
+    <img src="images/github-banner.png" alt="">
+  </a>
   <main>
     <p class="eyebrow">ARCADE / SELECIONE UM JOGO</p>
-    <h1>Mini jogos</h1>
+    <h1>RD</h1>
     <p class="intro">Dois clássicos, duas missões. Escolha seu próximo desafio.</p>
     <nav class="games" aria-label="Jogos disponíveis">
-      <a class="game-card" href="games/flap-bird/">
+      <a class="game-card" href="games/flap-bird/index.html">
         <span>01 / VOO</span>
         <h2>Flaap Bird</h2>
+        <img class="game-image" src="games/flap-bird/images/opening-reference.png" alt="Céu do Flaap Bird com nuvens, sol, colinas e obstáculo">
         <p>Desvie dos obstáculos, marque pontos e atravesse quatro cenários.</p>
       </a>
-      <a class="game-card" href="games/space-invaders/">
+      <a class="game-card" href="games/space-invaders/index.html">
         <span>02 / DEFESA</span>
         <h2>Space Invaders</h2>
+        <img class="game-image" src="games/space-invaders/images/space-invaders-background.png" alt="Espaço estrelado com planetas">
         <p>Proteja a base, elimine ondas de invasores e tente bater seu recorde.</p>
       </a>
     </nav>

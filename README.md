@@ -32,4 +32,4 @@ Cada jogo mantém seus próprios arquivos e pode ser publicado em conjunto, sem 
 
 ## GitHub Pages
 
-Publique o repositório e configure **Settings > Pages > Deploy from a branch**, selecionando a branch `main` e a pasta `/ (root)`. O menu e os dois jogos ficarão disponíveis pelas pastas listadas acima.
+Em **Settings > Pages**, selecione **GitHub Actions** como origem de publicação. A cada push na branch `master`, o workflow publica o site automaticamente; também é possível iniciar a publicação manualmente em **Actions > Deploy to GitHub Pages > Run workflow**. Na primeira publicação, o GitHub exibirá a URL do site em **Settings > Pages** e na execução do workflow. O menu e os dois jogos serão publicados juntos.

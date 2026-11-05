@@ -109,6 +109,40 @@ h1 span {
   transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
 }
 
+.home-link {
+  position: absolute;
+  z-index: 6;
+  top: 18px;
+  left: 22px;
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  padding: 0 14px;
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  background: #fffdf4;
+  box-shadow: 3px 3px 0 var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.game-screen .home-link {
+  top: auto;
+  bottom: 20px;
+}
+
+.home-link:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.home-link:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 4px;
+}
+
 .play-button {
   display: inline-flex;
   align-items: center;
@@ -495,6 +529,18 @@ h1 span {
   .menu-button {
     width: 36px;
     height: 36px;
+  }
+
+  .home-link {
+    top: 12px;
+    left: 12px;
+    min-height: 38px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  .game-screen .home-link {
+    bottom: 16px;
   }
 
   .hud-label,
