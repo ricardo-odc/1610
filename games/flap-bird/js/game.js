@@ -20,6 +20,10 @@
     const overlayTitle = root.querySelector('#overlay-title');
     const overlayCopy = root.querySelector('#overlay-copy');
     const overlayAction = root.querySelector('#overlay-action');
+    const overlayStats = root.querySelector('#overlay-stats');
+    const overlayScoreValue = root.querySelector('#overlay-score-value');
+    const overlayBestValue = root.querySelector('#overlay-best-value');
+    const bestScoreKey = 'flaap-bird-best-score';
 
     let width = 0;
     let height = 0;
@@ -82,12 +86,26 @@
         overlayTitle.textContent = 'Pronto para voar?';
         overlayCopy.textContent = 'Clique, toque ou pressione Espaço para começar.';
         overlayAction.textContent = 'Começar voo';
+        overlayStats.hidden = true;
         return;
       }
 
+      let bestScore = 0;
+      try {
+        bestScore = Number.parseInt(localStorage.getItem(bestScoreKey) || '0', 10);
+        if (!Number.isFinite(bestScore)) bestScore = 0;
+        if (score > bestScore) {
+          bestScore = score;
+          localStorage.setItem(bestScoreKey, String(bestScore));
+        }
+      } catch (_) {}
+
       overlayTitle.textContent = 'Voo encerrado';
-      overlayCopy.textContent = `Você fez ${score} ${score === 1 ? 'ponto' : 'pontos'} em ${formatElapsed(elapsed)}.`;
+      overlayCopy.textContent = `Você voou por ${formatElapsed(elapsed)}.`;
       overlayAction.textContent = 'Tentar novamente';
+      overlayScoreValue.textContent = String(score);
+      overlayBestValue.textContent = String(bestScore);
+      overlayStats.hidden = false;
     }
 
     function resetRun() {

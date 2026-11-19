@@ -178,8 +178,8 @@ h1 span {
 }
 
 .game-screen .home-link {
-  top: auto;
-  bottom: 20px;
+  top: 18px;
+  bottom: auto;
 }
 
 .home-link:hover {
@@ -323,6 +323,37 @@ h1 span {
   color: rgba(237,245,255,0.9);
 }
 
+.overlay-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 0 0 18px;
+}
+
+.overlay-stats[hidden] {
+  display: none;
+}
+
+.overlay-stats div {
+  display: grid;
+  gap: 3px;
+  padding: 10px 8px;
+  border: 1px solid rgba(91, 233, 255, 0.35);
+  background: rgba(91, 233, 255, 0.06);
+}
+
+.overlay-stats span {
+  color: #9adff4;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.overlay-stats strong {
+  font-size: 34px;
+  line-height: 1;
+}
+
 .game-screen .version-mark {
   z-index: 2;
   color: #edf5ff;
@@ -339,7 +370,8 @@ h1 span {
   }
 
   .game-screen .home-link {
-    bottom: 16px;
+    top: 12px;
+    bottom: auto;
   }
 }
 

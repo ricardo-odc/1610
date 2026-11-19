@@ -460,6 +460,36 @@ h1 span {
   line-height: 1.45;
 }
 
+.overlay-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 0 0 18px;
+}
+
+.overlay-stats[hidden] {
+  display: none;
+}
+
+.overlay-stats div {
+  display: grid;
+  gap: 3px;
+  padding: 10px 8px;
+  border: 2px solid rgb(24 58 59 / 28%);
+  background: rgb(255 255 255 / 35%);
+}
+
+.overlay-stats span {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.overlay-stats strong {
+  font-size: 34px;
+  line-height: 1;
+}
+
 .game-screen .version-mark {
   z-index: 2;
   color: #183a3b;

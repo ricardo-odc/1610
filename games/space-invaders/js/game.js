@@ -12,6 +12,10 @@
     const overlayTitle = root.querySelector('#overlay-title');
     const overlayCopy = root.querySelector('#overlay-copy');
     const overlayAction = root.querySelector('#overlay-action');
+    const overlayStats = root.querySelector('#overlay-stats');
+    const overlayScoreValue = root.querySelector('#overlay-score-value');
+    const overlayBestValue = root.querySelector('#overlay-best-value');
+    const bestScoreKey = 'space-invaders-best-score';
 
     let width = 0;
     let height = 0;
@@ -63,12 +67,26 @@
         overlayTitle.textContent = 'Nave pronta';
         overlayCopy.textContent = 'Use as setas para mover e Espaço para disparar.';
         overlayAction.textContent = 'Iniciar missão';
+        overlayStats.hidden = true;
         return;
       }
 
+      let bestScore = 0;
+      try {
+        bestScore = Number.parseInt(localStorage.getItem(bestScoreKey) || '0', 10);
+        if (!Number.isFinite(bestScore)) bestScore = 0;
+        if (score > bestScore) {
+          bestScore = score;
+          localStorage.setItem(bestScoreKey, String(bestScore));
+        }
+      } catch (_) {}
+
       overlayTitle.textContent = 'Base perdida';
-      overlayCopy.textContent = `Você alcançou ${score} pontos. Tente novamente na próxima missão.`;
+      overlayCopy.textContent = 'Tente novamente na próxima missão.';
       overlayAction.textContent = 'Recomeçar';
+      overlayScoreValue.textContent = String(score);
+      overlayBestValue.textContent = String(bestScore);
+      overlayStats.hidden = false;
     }
 
     function createBarriers() {
