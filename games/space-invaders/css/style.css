@@ -150,6 +150,65 @@ h1 span {
   line-height: 1.8;
 }
 
+.ship-picker {
+  margin: 0 0 18px;
+  padding: 0;
+  border: 0;
+}
+
+.ship-picker legend {
+  margin-bottom: 8px;
+  color: #9adff4;
+  font-family: 'DM Mono', 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.ship-options {
+  display: flex;
+  gap: 10px;
+}
+
+.ship-option {
+  width: 112px;
+  min-height: 86px;
+  display: grid;
+  place-items: center;
+  gap: 4px;
+  padding: 8px;
+  border: 1px solid rgba(154, 223, 244, 0.45);
+  color: var(--ink);
+  background: rgba(12, 18, 34, 0.72);
+  cursor: pointer;
+  font-family: 'DM Mono', 'Courier New', monospace;
+  font-size: 9px;
+}
+
+.ship-option.is-selected {
+  border-color: var(--sun);
+  background: rgba(255, 209, 102, 0.12);
+  box-shadow: 3px 3px 0 rgba(255, 209, 102, 0.7);
+}
+
+.ship-option:focus-visible {
+  outline: 3px solid #fffdf4;
+  outline-offset: 3px;
+}
+
+.ship-preview {
+  width: 96px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.ship-preview-classic {
+  position: relative;
+  width: 58px;
+  height: 40px;
+  clip-path: polygon(50% 0, 100% 100%, 58% 78%, 50% 100%, 42% 78%, 0 100%);
+  background: var(--neon);
+}
+
 .play-button,
 .back-button {
   min-height: 54px;

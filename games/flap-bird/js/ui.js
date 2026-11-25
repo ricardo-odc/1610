@@ -1,20 +1,51 @@
 (() => {
   function bindUI(root = document) {
     const openingScreen = root.querySelector('#opening-screen');
+    const characterScreen = root.querySelector('#character-screen');
     const gameScreen = root.querySelector('#game-screen');
     const startButton = root.querySelector('#start-button');
+    const characterBack = root.querySelector('#character-back');
+    const characterContinue = root.querySelector('#character-continue');
+    const characterCards = [...root.querySelectorAll('.character-card')];
     const menuButton = root.querySelector('#menu-button');
     const overlayAction = root.querySelector('#overlay-action');
     const canvas = root.querySelector('#game-canvas');
 
-    if (!openingScreen || !gameScreen || !startButton || !menuButton || !overlayAction || !canvas) {
+    if (!openingScreen || !characterScreen || !gameScreen || !startButton || !characterBack
+      || !characterContinue || !characterCards.length || !menuButton || !overlayAction || !canvas) {
       return null;
     }
 
+    let selectedCharacter = 'blue-dragon';
+
     startButton.addEventListener('click', () => {
       openingScreen.hidden = true;
+      characterScreen.hidden = false;
+    });
+
+    characterCards.forEach((card) => {
+      card.addEventListener('click', () => {
+        selectedCharacter = card.dataset.character;
+        characterCards.forEach((option) => {
+          const isSelected = option === card;
+          option.classList.toggle('selected', isSelected);
+          option.setAttribute('aria-pressed', String(isSelected));
+        });
+      });
+    });
+
+    characterBack.addEventListener('click', () => {
+      characterScreen.hidden = true;
+      openingScreen.hidden = false;
+    });
+
+    characterContinue.addEventListener('click', () => {
+      characterScreen.hidden = true;
       gameScreen.hidden = false;
-      if (window.flaapGame) window.flaapGame.start();
+      if (window.flaapGame) {
+        window.flaapGame.setCharacter(selectedCharacter);
+        window.flaapGame.start();
+      }
     });
 
     menuButton.addEventListener('click', () => {
@@ -39,7 +70,7 @@
       }
     });
 
-    return { openingScreen, gameScreen };
+    return { openingScreen, characterScreen, gameScreen };
   }
 
   window.FlaapBird = window.FlaapBird || {};

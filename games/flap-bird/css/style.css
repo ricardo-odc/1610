@@ -68,6 +68,95 @@ button {
   transform: translateY(-50%);
 }
 
+.character-screen {
+  overflow-y: auto;
+  background:
+    radial-gradient(ellipse at 82% 18%, rgb(255 202 98 / 60%), transparent 18%),
+    linear-gradient(180deg, #83dce2 0%, #b3edf0 68%, #d5f0ce 100%);
+}
+
+.character-content {
+  width: min(calc(100% - 40px), 760px);
+  margin: 76px auto 82px;
+}
+
+.character-title {
+  margin: 0 0 22px;
+  color: var(--ink);
+  font-size: clamp(36px, 6vw, 54px);
+  line-height: 1;
+}
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.character-card {
+  display: grid;
+  min-height: 140px;
+  align-content: center;
+  justify-items: center;
+  gap: 6px;
+  padding: 12px 8px;
+  border: 2px solid rgb(24 58 59 / 48%);
+  color: var(--ink);
+  background: rgb(255 253 244 / 78%);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+}
+
+.character-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 3px 4px 0 var(--ink);
+}
+
+.character-card.selected {
+  border-color: var(--coral);
+  background: #fffdf4;
+  box-shadow: 0 0 0 3px rgb(255 112 94 / 32%);
+}
+
+.character-card:focus-visible,
+.back-button:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 3px;
+}
+
+.character-icon {
+  font-size: 34px;
+  line-height: 1.1;
+}
+
+.character-card strong {
+  font-size: 15px;
+}
+
+.character-detail {
+  color: #426465;
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.character-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.back-button {
+  padding: 0 22px;
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  background: #fffdf4;
+  box-shadow: 5px 5px 0 var(--ink);
+  font-size: 16px;
+  font-weight: 700;
+}
+
 .eyebrow,
 .credit-line,
 .version-mark,
@@ -512,6 +601,45 @@ h1 span {
 
   .screen {
     min-height: calc(100vh - 24px);
+  }
+
+  .character-content {
+    width: calc(100% - 28px);
+    margin: 70px auto 82px;
+  }
+
+  .character-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .character-card {
+    min-height: 124px;
+    padding: 10px 6px;
+  }
+
+  .character-title {
+    margin-bottom: 16px;
+    font-size: 38px;
+  }
+
+  .character-actions {
+    gap: 9px;
+  }
+
+  .character-actions .play-button,
+  .character-actions .back-button {
+    min-height: 48px;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .character-icon {
+    font-size: 30px;
+  }
+
+  .character-card strong {
+    font-size: 14px;
   }
 
   .game-screen {

@@ -22,6 +22,19 @@
           <p class="eyebrow">NAVEGUE PELO SETOR BETA</p>
           <h1 id="game-title">SPACE<br><span>INVADERS</span></h1>
           <p class="opening-copy">Desvie dos invasores, proteja a base e acumule a maior pontuação possível.</p>
+          <fieldset class="ship-picker" aria-label="Escolha sua nave">
+            <legend>SELECIONE SUA NAVE</legend>
+            <div class="ship-options">
+              <button class="ship-option" type="button" data-player-choice="classic" aria-pressed="false">
+                <span class="ship-preview ship-preview-classic" aria-hidden="true"></span>
+                <strong>INTERCEPTOR</strong>
+              </button>
+              <button class="ship-option is-selected" type="button" data-player-choice="xwing" aria-pressed="true">
+                <canvas class="ship-preview ship-preview-xwing" id="xwing-preview" width="184" height="116" aria-hidden="true"></canvas>
+                <strong>X-WING</strong>
+              </button>
+            </div>
+          </fieldset>
           <button class="play-button" id="start-button" type="button">
             <span aria-hidden="true">▶</span> Iniciar missão
           </button>

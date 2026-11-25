@@ -28,9 +28,61 @@
           <h1 id="game-title">FLAAP<br><span>BIRD</span></h1>
           <p class="opening-copy">Quatro céus. Um voo sem pausas.</p>
           <button class="play-button" id="start-button" type="button">
-            <span aria-hidden="true">▶</span> Começar
+            <span aria-hidden="true">▶</span> Escolher personagem
           </button>
           <p class="credit-line">PREPARE AS ASAS</p>
+        </div>
+        <p class="version-mark">ARCADE / 01</p>
+      </section>
+
+      <section class="screen character-screen" id="character-screen" aria-labelledby="character-title" hidden>
+        <a class="home-link" href="../../index.html">← Tela inicial</a>
+        <div class="character-content">
+          <p class="eyebrow">ESCOLHA SEU VOADOR</p>
+          <h1 class="character-title" id="character-title">Quem vai voar?</h1>
+          <div class="character-grid" role="group" aria-label="Personagens disponíveis">
+            <button class="character-card selected" type="button" data-character="blue-dragon" aria-pressed="true">
+              <span class="character-icon" aria-hidden="true">🐉</span>
+              <strong>Dragão azul</strong>
+              <span class="character-detail">Asas prontas para a aventura</span>
+            </button>
+            <button class="character-card" type="button" data-character="chicken" aria-pressed="false">
+              <span class="character-icon" aria-hidden="true">🐔</span>
+              <strong>Galinha</strong>
+              <span class="character-detail">Pequena, rápida e corajosa</span>
+            </button>
+            <button class="character-card" type="button" data-character="shadow-dragon" aria-pressed="false">
+              <span class="character-icon" aria-hidden="true">🐲</span>
+              <strong>Dragão das sombras</strong>
+              <span class="character-detail">Um dragão original da noite</span>
+            </button>
+            <button class="character-card" type="button" data-character="water" aria-pressed="false">
+              <span class="character-icon" aria-hidden="true">💧</span>
+              <strong>Água</strong>
+              <span class="character-detail">Elemento água</span>
+            </button>
+            <button class="character-card" type="button" data-character="fire" aria-pressed="false">
+              <span class="character-icon" aria-hidden="true">🔥</span>
+              <strong>Fogo</strong>
+              <span class="character-detail">Elemento fogo</span>
+            </button>
+            <button class="character-card" type="button" data-character="earth" aria-pressed="false">
+              <span class="character-icon" aria-hidden="true">🌱</span>
+              <strong>Terra</strong>
+              <span class="character-detail">Elemento terra</span>
+            </button>
+            <button class="character-card" type="button" data-character="air" aria-pressed="false">
+              <span class="character-icon" aria-hidden="true">🌪️</span>
+              <strong>Ar</strong>
+              <span class="character-detail">Elemento ar</span>
+            </button>
+          </div>
+          <div class="character-actions">
+            <button class="back-button" id="character-back" type="button">Voltar</button>
+            <button class="play-button" id="character-continue" type="button">
+              <span aria-hidden="true">▶</span> Jogar
+            </button>
+          </div>
         </div>
         <p class="version-mark">ARCADE / 01</p>
       </section>

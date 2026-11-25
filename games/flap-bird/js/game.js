@@ -6,6 +6,15 @@
       { at: 30 * 60, clock: '20:00', name: 'NOITE', skyTop: '#202d59', skyBottom: '#455777', hillBack: '#39445c', hillFront: '#28394b', sun: '#f2e4c3' },
       { at: 45 * 60, clock: '06:00', name: 'AMANHECENDO', skyTop: '#7cacc1', skyBottom: '#f2b18d', hillBack: '#789b81', hillFront: '#49776b', sun: '#ffe0a0' },
     ];
+    const characters = {
+      'blue-dragon': { body: '#159fc1', light: '#69e1ef', dark: '#176b9b', accent: '#a5f5ff', eye: '#183a3b', kind: 'dragon' },
+      chicken: { body: '#ffd166', light: '#fff0a6', dark: '#d99b35', accent: '#ef5b54', eye: '#183a3b', kind: 'chicken' },
+      'shadow-dragon': { body: '#55428a', light: '#a88be8', dark: '#28213f', accent: '#dbb7ff', eye: '#fff1a8', kind: 'dragon' },
+      water: { body: '#2589d8', light: '#8de8ff', dark: '#16539e', accent: '#e0fbff', eye: '#183a3b', kind: 'water' },
+      fire: { body: '#e95c32', light: '#ffb338', dark: '#9e2934', accent: '#ffe26a', eye: '#183a3b', kind: 'fire' },
+      earth: { body: '#71934e', light: '#b8cc62', dark: '#465d3d', accent: '#e0b56c', eye: '#183a3b', kind: 'earth' },
+      air: { body: '#91c9d4', light: '#e4fbff', dark: '#5d8fa8', accent: '#ffffff', eye: '#183a3b', kind: 'air' },
+    };
 
     const canvas = root.querySelector('#game-canvas');
     if (!canvas) return null;
@@ -33,6 +42,7 @@
     let lastFrame = 0;
     let elapsed = 0;
     let score = 0;
+    let selectedCharacter = 'blue-dragon';
     let phaseIndex = 0;
     let lastHudSecond = -1;
     let bird;
@@ -269,30 +279,90 @@
     }
 
     function drawBird() {
+      const character = characters[selectedCharacter];
       context.save();
       context.translate(bird.x, bird.y);
       context.rotate(Math.max(-0.35, Math.min(0.55, bird.velocity / (700 * scale))));
-      context.fillStyle = '#8e4d38';
+
+      context.fillStyle = character.dark;
+      context.beginPath();
+      context.ellipse(-10 * scale, 3 * scale, 13 * scale, 9 * scale, -0.5, 0, Math.PI * 2);
+      context.fill();
+
+      if (character.kind === 'dragon') {
+        context.fillStyle = character.dark;
+        context.beginPath();
+        context.moveTo(-9 * scale, -9 * scale);
+        context.lineTo(-18 * scale, -22 * scale);
+        context.lineTo(-3 * scale, -16 * scale);
+        context.closePath();
+        context.moveTo(1 * scale, -11 * scale);
+        context.lineTo(1 * scale, -25 * scale);
+        context.lineTo(10 * scale, -14 * scale);
+        context.closePath();
+        context.fill();
+      } else if (character.kind === 'chicken') {
+        context.fillStyle = character.accent;
+        context.beginPath();
+        context.arc(0, -18 * scale, 4 * scale, Math.PI, 0);
+        context.arc(7 * scale, -18 * scale, 4 * scale, Math.PI, 0);
+        context.arc(14 * scale, -18 * scale, 4 * scale, Math.PI, 0);
+        context.fill();
+      } else if (character.kind === 'fire') {
+        context.fillStyle = character.accent;
+        context.beginPath();
+        context.moveTo(-9 * scale, -11 * scale);
+        context.lineTo(-7 * scale, -25 * scale);
+        context.lineTo(0, -16 * scale);
+        context.lineTo(7 * scale, -28 * scale);
+        context.lineTo(11 * scale, -12 * scale);
+        context.closePath();
+        context.fill();
+      } else if (character.kind === 'earth') {
+        context.fillStyle = character.accent;
+        context.beginPath();
+        context.ellipse(-8 * scale, -14 * scale, 5 * scale, 10 * scale, -0.8, 0, Math.PI * 2);
+        context.ellipse(1 * scale, -16 * scale, 5 * scale, 10 * scale, 0.8, 0, Math.PI * 2);
+        context.fill();
+      } else if (character.kind === 'water') {
+        context.fillStyle = character.accent;
+        context.beginPath();
+        context.moveTo(-19 * scale, 1 * scale);
+        context.quadraticCurveTo(-31 * scale, -9 * scale, -26 * scale, 6 * scale);
+        context.quadraticCurveTo(-23 * scale, 12 * scale, -17 * scale, 8 * scale);
+        context.fill();
+        context.beginPath();
+        context.moveTo(-3 * scale, -12 * scale);
+        context.quadraticCurveTo(2 * scale, -23 * scale, 8 * scale, -12 * scale);
+        context.fill();
+      } else if (character.kind === 'air') {
+        context.strokeStyle = character.accent;
+        context.lineWidth = 3 * scale;
+        context.beginPath();
+        context.arc(-6 * scale, 2 * scale, 12 * scale, Math.PI * 0.8, Math.PI * 1.8);
+        context.stroke();
+        context.beginPath();
+        context.arc(-2 * scale, -4 * scale, 19 * scale, Math.PI * 1.15, Math.PI * 1.85);
+        context.stroke();
+      }
+
+      context.fillStyle = character.body;
       context.beginPath();
       context.ellipse(0, 0, 24 * scale, 18 * scale, 0, 0, Math.PI * 2);
       context.fill();
-      context.fillStyle = '#ffbd4f';
+      context.fillStyle = character.light;
       context.beginPath();
-      context.ellipse(-2 * scale, -2 * scale, 20 * scale, 14 * scale, 0, 0, Math.PI * 2);
-      context.fill();
-      context.fillStyle = '#ee9145';
-      context.beginPath();
-      context.ellipse(-7 * scale, 6 * scale, 8 * scale, 5 * scale, -0.2, 0, Math.PI * 2);
+      context.ellipse(-2 * scale, 6 * scale, 13 * scale, 8 * scale, -0.2, 0, Math.PI * 2);
       context.fill();
       context.fillStyle = '#fffdf4';
       context.beginPath();
       context.arc(10 * scale, -7 * scale, 6 * scale, 0, Math.PI * 2);
       context.fill();
-      context.fillStyle = '#183a3b';
+      context.fillStyle = character.eye;
       context.beginPath();
       context.arc(12 * scale, -7 * scale, 2.2 * scale, 0, Math.PI * 2);
       context.fill();
-      context.fillStyle = '#ff705e';
+      context.fillStyle = character.accent;
       context.beginPath();
       context.moveTo(18 * scale, 0);
       context.lineTo(32 * scale, 4 * scale);
@@ -337,7 +407,11 @@
 
     window.addEventListener('resize', resizeCanvas);
 
-    return { start, stop, activate };
+    function setCharacter(characterId) {
+      if (characters[characterId]) selectedCharacter = characterId;
+    }
+
+    return { start, stop, activate, setCharacter };
   }
 
   window.FlaapBird = window.FlaapBird || {};

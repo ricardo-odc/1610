@@ -1,4 +1,62 @@
 (() => {
+  function drawXWing(context, x, y, scale) {
+    context.save();
+    context.translate(x, y);
+    context.lineWidth = 1.5 * scale;
+    context.strokeStyle = '#26384a';
+
+    const wing = (startX, startY, tipX, tipY, innerX, innerY) => {
+      context.beginPath();
+      context.moveTo(startX * scale, startY * scale);
+      context.lineTo(tipX * scale, tipY * scale);
+      context.lineTo(innerX * scale, innerY * scale);
+      context.closePath();
+      context.fill();
+      context.stroke();
+    };
+
+    context.fillStyle = '#dfe5e6';
+    wing(-8, -7, -43, -24, -23, -1);
+    wing(8, -7, 43, -24, 23, -1);
+    wing(-8, 7, -43, 25, -23, 1);
+    wing(8, 7, 43, 25, 23, 1);
+
+    context.fillStyle = '#b83232';
+    context.fillRect(-39 * scale, -23 * scale, 22 * scale, 4 * scale);
+    context.fillRect(17 * scale, -23 * scale, 22 * scale, 4 * scale);
+    context.fillRect(-39 * scale, 19 * scale, 22 * scale, 4 * scale);
+    context.fillRect(17 * scale, 19 * scale, 22 * scale, 4 * scale);
+
+    context.fillStyle = '#eef3f4';
+    context.beginPath();
+    context.moveTo(0, -29 * scale);
+    context.lineTo(10 * scale, -16 * scale);
+    context.lineTo(8 * scale, 20 * scale);
+    context.lineTo(0, 28 * scale);
+    context.lineTo(-8 * scale, 20 * scale);
+    context.lineTo(-10 * scale, -16 * scale);
+    context.closePath();
+    context.fill();
+    context.stroke();
+
+    context.fillStyle = '#26384a';
+    context.beginPath();
+    context.ellipse(0, -12 * scale, 5 * scale, 8 * scale, 0, 0, Math.PI * 2);
+    context.fill();
+    context.fillStyle = '#7c9eb0';
+    context.beginPath();
+    context.ellipse(0, -12 * scale, 2.5 * scale, 5 * scale, 0, 0, Math.PI * 2);
+    context.fill();
+
+    context.fillStyle = '#aebbc0';
+    context.fillRect(-6 * scale, -27 * scale, 12 * scale, 6 * scale);
+    context.fillRect(-46 * scale, -27 * scale, 8 * scale, 12 * scale);
+    context.fillRect(38 * scale, -27 * scale, 8 * scale, 12 * scale);
+    context.fillRect(-46 * scale, 15 * scale, 8 * scale, 12 * scale);
+    context.fillRect(38 * scale, 15 * scale, 8 * scale, 12 * scale);
+    context.restore();
+  }
+
   function createGame(root = document) {
     const canvas = root.querySelector('#game-canvas');
     if (!canvas) return null;
@@ -34,6 +92,7 @@
     let enemyDirection = 1;
     let enemySpeed = 0;
     let enemyFireCooldown = 0;
+    let playerShip = 'xwing';
     const pressedKeys = { left: false, right: false, fire: false };
 
     function resizeCanvas() {
@@ -47,8 +106,9 @@
       context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
 
       if (player) {
-        player.width = 42 * scale;
-        player.height = 22 * scale;
+        const xWingMode = playerShip === 'xwing';
+        player.width = (xWingMode ? 92 : 42) * scale;
+        player.height = (xWingMode ? 58 : 22) * scale;
         player.x = Math.min(Math.max(player.x, player.width / 2 + 16 * scale), width - player.width / 2 - 16 * scale);
       }
     }
@@ -145,8 +205,8 @@
       player = {
         x: width / 2,
         y: height - 48 * scale,
-        width: 42 * scale,
-        height: 22 * scale,
+        width: (playerShip === 'xwing' ? 92 : 42) * scale,
+        height: (playerShip === 'xwing' ? 58 : 22) * scale,
         fireCooldown: 0,
       };
       barriers = createBarriers();
@@ -368,11 +428,29 @@
 
     function drawEnemies() {
       for (const enemy of enemies) {
-        context.fillStyle = enemy.color;
-        context.fillRect(enemy.x + 2 * scale, enemy.y + 2 * scale, enemy.width - 4 * scale, enemy.height - 4 * scale);
-        context.fillStyle = '#06131d';
-        context.fillRect(enemy.x + 7 * scale, enemy.y + 7 * scale, 5 * scale, 5 * scale);
-        context.fillRect(enemy.x + enemy.width - 12 * scale, enemy.y + 7 * scale, 5 * scale, 5 * scale);
+        if (playerShip !== 'xwing') {
+          context.fillStyle = enemy.color;
+          context.fillRect(enemy.x + 2 * scale, enemy.y + 2 * scale, enemy.width - 4 * scale, enemy.height - 4 * scale);
+          context.fillStyle = '#06131d';
+          context.fillRect(enemy.x + 7 * scale, enemy.y + 7 * scale, 5 * scale, 5 * scale);
+          context.fillRect(enemy.x + enemy.width - 12 * scale, enemy.y + 7 * scale, 5 * scale, 5 * scale);
+          continue;
+        }
+
+        context.save();
+        context.translate(enemy.x + enemy.width / 2, enemy.y + enemy.height / 2);
+        context.fillStyle = '#d8d8d8';
+        context.strokeStyle = '#8ea8b6';
+        context.lineWidth = 1 * scale;
+        context.beginPath();
+        context.arc(0, 0, enemy.width * 0.16, 0, Math.PI * 2);
+        context.fill();
+        context.stroke();
+        context.fillRect(-enemy.width * 0.48, -enemy.height * 0.34, enemy.width * 0.22, enemy.height * 0.68);
+        context.fillRect(enemy.width * 0.26, -enemy.height * 0.34, enemy.width * 0.22, enemy.height * 0.68);
+        context.strokeRect(-enemy.width * 0.48, -enemy.height * 0.34, enemy.width * 0.22, enemy.height * 0.68);
+        context.strokeRect(enemy.width * 0.26, -enemy.height * 0.34, enemy.width * 0.22, enemy.height * 0.68);
+        context.restore();
       }
     }
 
@@ -380,6 +458,11 @@
       if (!player) return;
       context.save();
       context.translate(player.x, player.y);
+      if (playerShip === 'xwing') {
+        drawXWing(context, 0, 0, scale);
+        context.restore();
+        return;
+      }
       context.fillStyle = '#5be9ff';
       context.beginPath();
       context.moveTo(0, -player.height / 2);
@@ -460,6 +543,15 @@
       state = 'stopped';
     }
 
+    function setPlayerShip(choice) {
+      playerShip = choice === 'classic' ? 'classic' : 'xwing';
+      if (player) {
+        player.width = (playerShip === 'xwing' ? 92 : 42) * scale;
+        player.height = (playerShip === 'xwing' ? 58 : 22) * scale;
+        player.x = Math.min(Math.max(player.x, player.width / 2 + 16 * scale), width - player.width / 2 - 16 * scale);
+      }
+    }
+
     window.addEventListener('keydown', (event) => {
       if (event.code === 'ArrowLeft' || event.code === 'KeyA') {
         pressedKeys.left = true;
@@ -490,10 +582,11 @@
 
     window.addEventListener('resize', resizeCanvas);
 
-    return { start, stop, activate };
+    return { start, stop, activate, setPlayerShip };
   }
 
   window.SpaceInvaders = window.SpaceInvaders || {};
+  window.SpaceInvaders.drawXWing = drawXWing;
   window.SpaceInvaders.create = createGame;
   window.SpaceInvaders.init = function initializeGame() {
     const root = document.querySelector('[data-space-invaders-root]') || document;
