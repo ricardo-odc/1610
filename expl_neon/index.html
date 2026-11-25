@@ -19,10 +19,36 @@
       height: 100%;
       cursor: crosshair;
     }
+    .home-link {
+      position: fixed;
+      z-index: 10;
+      top: 14px;
+      left: 14px;
+      display: inline-flex;
+      min-height: 36px;
+      align-items: center;
+      padding: 0 12px;
+      border: 2px solid #f9c968;
+      color: #fff;
+      background: #17172a;
+      box-shadow: 3px 3px 0 #090914;
+      font: 700 12px 'Trebuchet MS', sans-serif;
+      text-decoration: none;
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
+    .home-link:hover, .home-link:focus-visible {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 #090914;
+    }
+    .home-link:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+    }
   </style>
 </head>
 <body>
   <canvas id="game" aria-label="Jogo Explosão Neon"></canvas>
+  <a class="home-link" href="../index.html">← Tela inicial</a>
   <script>
     const canvas = document.querySelector('#game');
     const context = canvas.getContext('2d');

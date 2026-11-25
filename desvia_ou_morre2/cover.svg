@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" role="img" aria-labelledby="title description" shape-rendering="crispEdges">
+  <title id="title">Balão desviando de shurikens</title>
+  <desc id="description">Um balão vermelho em pixel art desvia de shurikens em um céu noturno.</desc>
+  <defs>
+    <g id="shuriken">
+      <rect x="-5" y="-45" width="10" height="10" fill="#e7f0ff"/>
+      <rect x="-15" y="-35" width="30" height="10" fill="#b8c9e5"/>
+      <rect x="-25" y="-25" width="50" height="10" fill="#dbe7f8"/>
+      <rect x="-35" y="-15" width="70" height="10" fill="#9eafce"/>
+      <rect x="-45" y="-5" width="90" height="10" fill="#d5e0f3"/>
+      <rect x="-35" y="5" width="70" height="10" fill="#94a7c8"/>
+      <rect x="-25" y="15" width="50" height="10" fill="#dbe7f8"/>
+      <rect x="-15" y="25" width="30" height="10" fill="#b8c9e5"/>
+      <rect x="-5" y="35" width="10" height="10" fill="#e7f0ff"/>
+      <rect x="-10" y="-10" width="20" height="20" fill="#34375f"/>
+      <rect x="-5" y="-5" width="10" height="10" fill="#f3f5ff"/>
+    </g>
+  </defs>
+  <rect width="960" height="500" fill="#182348"/>
+  <rect x="0" y="90" width="960" height="40" fill="#1d2852"/>
+  <rect x="0" y="220" width="960" height="50" fill="#222b59"/>
+  <rect x="0" y="360" width="960" height="50" fill="#272b59"/>
+  <g fill="#c9ddff">
+    <rect x="80" y="70" width="10" height="10"/><rect x="180" y="190" width="10" height="10"/>
+    <rect x="320" y="50" width="10" height="10"/><rect x="540" y="80" width="10" height="10"/>
+    <rect x="840" y="100" width="10" height="10"/><rect x="890" y="270" width="10" height="10"/>
+    <rect x="110" y="380" width="10" height="10"/><rect x="590" y="430" width="10" height="10"/>
+    <rect x="720" y="60" width="10" height="10"/><rect x="400" y="420" width="10" height="10"/>
+  </g>
+  <path d="M0 450h120v-20h80v-20h70v-20h90v20h70v-30h80v20h100v-10h90v30h70v30h90v50H0Z" fill="#252c59"/>
+  <path d="M0 480h130v-20h70v-20h90v20h70v10h90v-30h80v20h110v-10h90v30h130v50H0Z" fill="#30315f"/>
+  <g fill="#61dbe5">
+    <rect x="210" y="290" width="20" height="10"/><rect x="250" y="270" width="20" height="10"/>
+    <rect x="290" y="250" width="20" height="10"/><rect x="330" y="240" width="20" height="10"/>
+    <rect x="360" y="230" width="10" height="10"/><rect x="350" y="210" width="10" height="10"/>
+    <rect x="360" y="200" width="20" height="10"/><rect x="370" y="190" width="10" height="10"/>
+  </g>
+  <g fill="#a89bff" opacity=".8">
+    <rect x="650" y="120" width="20" height="10"/><rect x="700" y="110" width="20" height="10"/>
+    <rect x="760" y="130" width="20" height="10"/><rect x="620" y="380" width="20" height="10"/>
+    <rect x="680" y="400" width="20" height="10"/><rect x="740" y="390" width="20" height="10"/>
+  </g>
+  <use href="#shuriken" x="160" y="150"/>
+  <use href="#shuriken" x="790" y="160"/>
+  <use href="#shuriken" x="760" y="360"/>
+  <g transform="translate(480 250)">
+    <g fill="#572142">
+      <rect x="-20" y="-100" width="40" height="10"/><rect x="-30" y="-90" width="60" height="10"/>
+      <rect x="-40" y="-80" width="80" height="10"/><rect x="-50" y="-70" width="100" height="10"/>
+      <rect x="-60" y="-60" width="120" height="10"/><rect x="-70" y="-50" width="140" height="10"/>
+      <rect x="-75" y="-40" width="150" height="10"/><rect x="-80" y="-30" width="160" height="10"/>
+      <rect x="-80" y="-20" width="160" height="10"/><rect x="-80" y="-10" width="160" height="10"/>
+      <rect x="-80" y="0" width="160" height="10"/><rect x="-75" y="10" width="150" height="10"/>
+      <rect x="-70" y="20" width="140" height="10"/><rect x="-60" y="30" width="120" height="10"/>
+      <rect x="-50" y="40" width="100" height="10"/><rect x="-35" y="50" width="70" height="10"/>
+      <rect x="-15" y="60" width="30" height="10"/>
+    </g>
+    <g>
+      <rect x="-20" y="-90" width="40" height="10" fill="#ff7469"/>
+      <rect x="-30" y="-80" width="60" height="10" fill="#fa4b5a"/>
+      <rect x="-40" y="-70" width="80" height="10" fill="#ff625e"/>
+      <rect x="-50" y="-60" width="100" height="10" fill="#f23f55"/>
+      <rect x="-60" y="-50" width="120" height="10" fill="#f94758"/>
+      <rect x="-65" y="-40" width="130" height="10" fill="#eb304e"/>
+      <rect x="-70" y="-30" width="140" height="10" fill="#f73c54"/>
+      <rect x="-70" y="-20" width="140" height="10" fill="#e82c4a"/>
+      <rect x="-70" y="-10" width="140" height="10" fill="#ed3450"/>
+      <rect x="-70" y="0" width="140" height="10" fill="#d92749"/>
+      <rect x="-65" y="10" width="130" height="10" fill="#e93350"/>
+      <rect x="-60" y="20" width="120" height="10" fill="#d92949"/>
+      <rect x="-50" y="30" width="100" height="10" fill="#e2324d"/>
+      <rect x="-40" y="40" width="80" height="10" fill="#cf2948"/>
+      <rect x="-25" y="50" width="50" height="10" fill="#d82b49"/>
+    </g>
+    <g fill="#ffd0c9">
+      <rect x="-45" y="-60" width="20" height="10"/><rect x="-35" y="-50" width="20" height="10"/>
+      <rect x="-25" y="-40" width="10" height="10"/><rect x="-15" y="-30" width="10" height="10"/>
+    </g>
+    <rect x="-20" y="70" width="40" height="10" fill="#572142"/>
+    <rect x="-10" y="70" width="20" height="10" fill="#f23f55"/>
+    <g fill="#f2d9ed">
+      <rect x="-10" y="80" width="10" height="10"/><rect x="0" y="90" width="10" height="10"/>
+      <rect x="10" y="100" width="10" height="10"/><rect x="0" y="110" width="10" height="10"/>
+      <rect x="-10" y="120" width="10" height="10"/><rect x="0" y="130" width="10" height="10"/>
+    </g>
+  </g>
+  <rect x="80" y="450" width="800" height="10" fill="#776cb2"/>
+</svg>
